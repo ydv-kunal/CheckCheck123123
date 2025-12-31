@@ -37,7 +37,7 @@ export function Hero() {
               </div>
             </motion.div>
 
-            <div className="space-y-4">
+            <div className="space-y-7">
               <motion.h1
                 className="text-6xl md:text-7xl font-bold text-balance bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent"
                 initial={{ opacity: 0, y: 20 }}
