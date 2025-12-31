@@ -6,12 +6,17 @@ import { Badge } from "@/components/ui/badge"
 import { ExternalLink, Github, ChevronDown, ChevronUp } from "lucide-react"
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
-import { useRef, useState } from "react"
+import { useRef, useState, useEffect } from "react"
 
 export function Projects() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null)
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   const projects = [
     {
@@ -57,7 +62,18 @@ export function Projects() {
   ]
 
   const handleExternalLink = (url: string) => {
-    window.open(url, '_blank', 'noopener,noreferrer')
+    if (!isClient) return
+    
+    // Create a temporary anchor element
+    const tempLink = document.createElement('a')
+    tempLink.href = url
+    tempLink.target = '_blank'
+    tempLink.rel = 'noopener noreferrer'
+    
+    // Append to body, click, then remove
+    document.body.appendChild(tempLink)
+    tempLink.click()
+    document.body.removeChild(tempLink)
   }
 
   return (
@@ -150,7 +166,24 @@ export function Projects() {
                         size="sm"
                         variant="outline"
                         className="flex-1 border-orange-300 text-orange-700 hover:bg-orange-50 bg-transparent"
-                        onClick={() => handleExternalLink(project.github!)}
+                        onClick={(e) => {
+                          e.preventDefault()
+                          e.stopPropagation()
+                          e.nativeEvent.stopImmediatePropagation()
+                          
+                          // Direct window.open with fallback
+                          const newWindow = window.open(project.github, '_blank', 'noopener,noreferrer')
+                          
+                          // If popup blocked, use direct location change
+                          if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+                            // Use location.assign to prevent history issues
+                            window.location.assign(project.github!)
+                          }
+                        }}
+                        onMouseDown={(e) => {
+                          // Prevent any default mouse behavior
+                          e.preventDefault()
+                        }}
                       >
                         <Github className="w-4 h-4 mr-2" />
                         Code
@@ -160,7 +193,24 @@ export function Projects() {
                       <Button 
                         size="sm" 
                         className="flex-1 bg-orange-600 hover:bg-orange-700"
-                        onClick={() => handleExternalLink(project.live!)}
+                        onClick={(e) => {
+                          e.preventDefault()
+                          e.stopPropagation()
+                          e.nativeEvent.stopImmediatePropagation()
+                          
+                          // Direct window.open with fallback
+                          const newWindow = window.open(project.live, '_blank', 'noopener,noreferrer')
+                          
+                          // If popup blocked, use direct location change
+                          if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+                            // Use location.assign to prevent history issues
+                            window.location.assign(project.live!)
+                          }
+                        }}
+                        onMouseDown={(e) => {
+                          // Prevent any default mouse behavior
+                          e.preventDefault()
+                        }}
                       >
                         <ExternalLink className="w-4 h-4 mr-2" />
                         Demo
