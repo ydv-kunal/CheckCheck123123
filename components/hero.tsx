@@ -46,6 +46,7 @@ export function Hero() {
               >
                 Kunal Yadav
               </motion.h1>
+
               <motion.p
                 className="text-2xl md:text-3xl text-gray-700 font-semibold"
                 initial={{ opacity: 0, y: 20 }}
@@ -54,6 +55,7 @@ export function Hero() {
               >
                 Software Engineer
               </motion.p>
+
               <motion.p
                 className="text-lg text-gray-600 leading-relaxed max-w-xl"
                 initial={{ opacity: 0, y: 20 }}
@@ -74,6 +76,7 @@ export function Hero() {
               <Button size="lg" asChild className="bg-violet-600 hover:bg-violet-700">
                 <a href="#projects">View Projects</a>
               </Button>
+
               <Button
                 size="lg"
                 variant="outline"
@@ -84,42 +87,48 @@ export function Hero() {
               </Button>
             </motion.div>
 
+            {/* SOCIAL ICONS */}
             <motion.div
               className="flex gap-4 pt-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.6 }}
             >
-              <Link
+              <a
                 href="https://github.com/kunalyadav"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="p-3 rounded-full border-2 border-violet-200 hover:bg-violet-100 transition-colors"
               >
                 <Github className="w-5 h-5 text-violet-600" />
                 <span className="sr-only">GitHub</span>
-              </Link>
-              <Link
+              </a>
+
+              <a
                 href="https://linkedin.com/in/kunalyadav"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="p-3 rounded-full border-2 border-violet-200 hover:bg-violet-100 transition-colors"
               >
                 <Linkedin className="w-5 h-5 text-violet-600" />
                 <span className="sr-only">LinkedIn</span>
-              </Link>
-              <Link
+              </a>
+
+              <a
                 href="mailto:yadavkunal0008@gmail.com"
                 className="p-3 rounded-full border-2 border-violet-200 hover:bg-violet-100 transition-colors"
               >
                 <Mail className="w-5 h-5 text-violet-600" />
                 <span className="sr-only">Email</span>
-              </Link>
-              <Link
+              </a>
+
+              <a
                 href="tel:+918076751564"
                 className="p-3 rounded-full border-2 border-violet-200 hover:bg-violet-100 transition-colors"
               >
                 <Phone className="w-5 h-5 text-violet-600" />
                 <span className="sr-only">Phone</span>
-              </Link>
+              </a>
             </motion.div>
           </motion.div>
 
@@ -145,18 +154,5 @@ export function Hero() {
         </div>
       </div>
     </section>
-  )
-}
-
-function StatItem({ label, value }: { label: string; value: string }) {
-  return (
-    <motion.div
-      className="flex justify-between items-center p-4 rounded-xl bg-violet-50"
-      whileHover={{ scale: 1.05, backgroundColor: "rgb(237 233 254)" }}
-      transition={{ duration: 0.2 }}
-    >
-      <span className="text-sm text-gray-600">{label}</span>
-      <span className="font-semibold text-violet-600">{value}</span>
-    </motion.div>
   )
 }
