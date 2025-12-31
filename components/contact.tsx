@@ -37,12 +37,12 @@ export function Contact() {
     {
       icon: Github,
       label: "GitHub",
-      href: "https://github.com/kunalyadav",
+      href: "https://github.com/ydv-kunal",
     },
     {
       icon: Linkedin,
       label: "LinkedIn",
-      href: "https://linkedin.com/in/kunalyadav",
+      href: "https://www.linkedin.com/in/kunal-yadav-437774280/",
     },
   ]
 
