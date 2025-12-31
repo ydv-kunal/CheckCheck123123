@@ -4,7 +4,6 @@ import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { ExternalLink, Github, ChevronDown, ChevronUp } from "lucide-react"
-import Link from "next/link"
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef, useState } from "react"
@@ -146,21 +145,30 @@ export function Projects() {
                       <Button
                         size="sm"
                         variant="outline"
-                        asChild
-                        className="flex-1 border-orange-300 text-orange-700 hover:bg-orange-50 bg-transparent"
+                        className="flex-1 border-orange-300 text-orange-700 hover:bg-orange-50 bg-transparent p-0"
                       >
-                        <Link href={project.github} target="_blank" rel="noopener noreferrer">
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center justify-center w-full h-full px-4 py-2"
+                        >
                           <Github className="w-4 h-4 mr-2" />
                           Code
-                        </Link>
+                        </a>
                       </Button>
                     )}
                     {project.live && (
-                      <Button size="sm" asChild className="flex-1 bg-orange-600 hover:bg-orange-700">
-                        <Link href={project.live} target="_blank" rel="noopener noreferrer">
+                      <Button size="sm" className="flex-1 bg-orange-600 hover:bg-orange-700 p-0">
+                        <a
+                          href={project.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center justify-center w-full h-full px-4 py-2 text-white"
+                        >
                           <ExternalLink className="w-4 h-4 mr-2" />
                           Demo
-                        </Link>
+                        </a>
                       </Button>
                     )}
                   </div>
