@@ -95,7 +95,7 @@ export function Hero() {
               transition={{ delay: 0.6, duration: 0.6 }}
             >
               <a
-                href="https://github.com/kunalyadav"
+                href="https://github.com/ydv-kunal"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-full border-2 border-violet-200 hover:bg-violet-100 transition-colors"
@@ -105,7 +105,7 @@ export function Hero() {
               </a>
 
               <a
-                href="https://linkedin.com/in/kunalyadav"
+                href="https://www.linkedin.com/in/kunal-yadav-437774280/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-full border-2 border-violet-200 hover:bg-violet-100 transition-colors"
